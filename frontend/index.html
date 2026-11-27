@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EcoEndpoint Lite</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <div><h1>EcoEndpoint <span>Lite</span></h1><p>Analista de datos para centros de acopio</p></div>
+    <div class="acciones">
+      <button id="btnEjemplo" class="sec">Cargar datos de ejemplo</button>
+      <button id="btnReiniciar" class="sec">Reiniciar datos</button>
+    </div>
+  </header>
+
+  <section class="kpis" aria-label="Resumen">
+    <div><b id="kRegistros">0</b><span>registros</span></div>
+    <div><b id="kKg">0</b><span>kg recibidos</span></div>
+    <div><b id="kCo2">0</b><span>kg de CO₂ evitados</span></div>
+    <div><b id="kTop">—</b><span>material líder</span></div>
+  </section>
+
+  <main class="grid">
+    <section class="panel">
+      <h2>1 · Turnos <small>Cola (FIFO)</small></h2>
+      <div class="fila"><input id="nombre" placeholder="Nombre de la persona"><button id="btnTurno">Agregar</button></div>
+      <ol id="cola" class="lista"></ol>
+      <button id="btnAtender" class="sec">Atender siguiente</button>
+    </section>
+
+    <section class="panel">
+      <h2>2 · Registrar residuo</h2>
+      <p id="actual" class="aviso">Atiende un turno para registrar.</p>
+      <div class="fila"><input id="codigo" placeholder="Código de barras (opcional)"><button id="btnConsultar" class="sec">Consultar API</button></div>
+      <p id="msgApi" class="nota"></p>
+      <label>Material <select id="material"></select></label>
+      <label>Peso en kg <input id="kg" type="number" min="0" step="0.01" placeholder="vacío = peso estimado"></label>
+      <div class="fila"><button id="btnRegistrar">Registrar</button><button id="btnReco" class="sec">Recomendación (Groq)</button></div>
+      <p id="reco" class="aviso" hidden></p>
+      <p id="msg" class="nota" role="status"></p>
+    </section>
+
+    <section class="panel">
+      <h2>3 · Historial <small>Pila (LIFO)</small></h2>
+      <ul id="historial" class="lista"></ul>
+      <button id="btnDeshacer" class="sec">Deshacer último registro</button>
+    </section>
+  </main>
+
+  <section class="panel ancho">
+    <nav class="tabs" role="tablist">
+      <button class="tab activa" data-tab="reporte">Reporte (Pandas)</button>
+      <button class="tab" data-tab="algoritmos">Algoritmos</button>
+      <button class="tab" data-tab="estadistica">Estadística</button>
+      <button class="tab" data-tab="graficas">Gráficas</button>
+      <button class="tab" data-tab="informe">Informe del analista</button>
+    </nav>
+    <div id="reporte" class="contenido"></div>
+    <div id="algoritmos" class="contenido" hidden>
+      <div class="cols">
+        <div><h3>Ranking de materiales</h3><button id="btnRanking" class="sec">Ordenar (burbuja vs merge sort)</button><div id="outRanking"></div></div>
+        <div><h3>Buscar registro por ID</h3><div class="fila"><input id="idBuscar" type="number" min="1" placeholder="ID"><button id="btnBuscar" class="sec">Buscar</button></div><div id="outBuscar"></div></div>
+        <div><h3>Plan de carga del camión</h3><div class="fila"><input id="capacidad" type="number" min="1" value="20"><button id="btnCamion" class="sec">Calcular (voraz)</button></div><div id="outCamion"></div></div>
+      </div>
+    </div>
+    <div id="estadistica" class="contenido" hidden></div>
+    <div id="graficas" class="contenido" hidden><button id="btnGraficas" class="sec">Actualizar gráficas</button><div id="outGraficas" class="imgs"></div></div>
+    <div id="informe" class="contenido" hidden>
+      <p class="nota">Pandas calcula los números; la IA de Groq los interpreta. Solo se envían datos agregados, sin nombres de personas.</p>
+      <button id="btnInforme" class="sec">Generar informe</button>
+      <div id="outInforme"></div>
+    </div>
+  </section>
+  <footer>Equipo Endpoint · Samsung Innovation Campus · Módulo Python · Datos de productos: Open Food Facts</footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>

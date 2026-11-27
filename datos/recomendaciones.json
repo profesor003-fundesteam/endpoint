@@ -1,0 +1,9 @@
+{
+  "plastico": "Vacía, enjuaga y compacta los envases; sepáralos por tipo de plástico si es posible.",
+  "vidrio":   "No mezcles con cerámica ni espejos; manipula con cuidado y separa por color.",
+  "metal":    "Enjuaga las latas y sepáralas de la chatarra; el aluminio se recicla casi sin límite.",
+  "papel":    "Mantenlo seco y limpio; retira clips y plásticos antes de embalar.",
+  "carton":   "Aplana las cajas y guárdalas secas, sin restos de comida ni grasa.",
+  "organico": "Sepáralo de los reciclables y envíalo a compostaje lo antes posible.",
+  "otros":    "Revisa el material y colócalo en el contenedor que mejor corresponda."
+}
