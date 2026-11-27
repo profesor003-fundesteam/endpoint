@@ -1,6 +1,6 @@
 
 # EcoEndpoint Lite
-Analista de datos para centros de acopio · Samsung Innovation Campus · Módulo Python · Equipo **Endpoint**
+Analista de datos para centros de acopio · Equipo **Endpoint**
 
 Lince Ávila, Gustavo Almanza, Juan Meneses, Isaías Domínguez
 
